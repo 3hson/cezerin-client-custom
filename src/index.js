@@ -59,12 +59,17 @@ export default class Client {
 		this.apiToken = options.apiToken;
 		this.ajaxBaseUrl = options.ajaxBaseUrl || '/ajax';
 		this.webstoreToken = options.webstoreToken;
+		this.language = options.language || 'en-US,en;q=0.9,fa;q=0.8';
 
 		const apiClient = new ApiClient({
 			baseUrl: this.apiBaseUrl,
-			token: this.apiToken
+			token: this.apiToken,
+			language: this.language
 		});
-		const ajaxClient = new AjaxClient({ baseUrl: this.ajaxBaseUrl });
+		const ajaxClient = new AjaxClient({
+			baseUrl: this.ajaxBaseUrl,
+			language: this.language
+		});
 		const webstoreClient = new WebStoreClient({ token: this.webstoreToken });
 
 		this.products = new Products(apiClient);

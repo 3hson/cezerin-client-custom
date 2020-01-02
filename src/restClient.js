@@ -2,9 +2,10 @@ import fetch from 'cross-fetch';
 import queryString from 'query-string';
 
 export default class RestClient {
-	constructor({ baseUrl, token }) {
+	constructor({ baseUrl, token, language }) {
 		this.baseUrl = baseUrl;
 		this.token = token;
+		this.language = language;
 	}
 
 	getConfig(method, data) {
@@ -12,7 +13,8 @@ export default class RestClient {
 			method,
 			headers: {
 				'Content-Type': 'application/json',
-				Authorization: `Bearer ${this.token}`
+				Authorization: `Bearer ${this.token}`,
+				'Accept-Language': this.language
 			}
 		};
 
