@@ -7,7 +7,7 @@ export default class ApiClient extends RestClient {
 			method: 'post',
 			headers: {
 				'Content-Type': 'application/json',
-				'Accept-Language': this.language
+				'Accept-Language': language
 			},
 			body: JSON.stringify({ email })
 		};
